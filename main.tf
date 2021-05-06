@@ -9,11 +9,10 @@ terraform {
       name = "nindevdo"
     }
   }
-}
-
-# An example resource that does nothing.
-resource "null_resource" "example" {
-  triggers = {
-    value = "A example resource that does nothing!"
+  required_providers {
+    github = {
+      source  = "github/github"
+      version = "~> 4.9.2"
+    }
   }
 }
