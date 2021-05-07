@@ -27,5 +27,6 @@ module "devs" {
     "bandithak"        = { role = "maintainer" }
     "brandoncamenisch" = { role = "maintainer" },
     "lilbytes"         = { role = "maintainer" },
+    "pDhRoAeGnOiNx"    = { role = "member" },
   }
 }
