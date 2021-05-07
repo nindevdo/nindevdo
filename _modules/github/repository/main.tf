@@ -12,16 +12,16 @@ resource "github_repository" "repo" {
   visibility             = var.visibility
 }
 
-# resource "github_team_repository" "push_teams"{
-#   for_each = local.push_teams
-#   team_id    = each.value
-#   repository = github_repository.repo.name
-#   permission = "push"
-# }
-#
-# resource "github_team_repository" "admin_teams"{
-#   for_each = local.admin_teams
-#   team_id    = each.value
-#   repository = github_repository.repo.name
-#   permission = "admin"
-# }
+resource "github_team_repository" "push_teams"{
+  for_each = local.push_teams
+  team_id    = each.value
+  repository = github_repository.repo.name
+  permission = "push"
+}
+
+resource "github_team_repository" "admin_teams"{
+  for_each = local.admin_teams
+  team_id    = each.value
+  repository = github_repository.repo.name
+  permission = "admin"
+}
