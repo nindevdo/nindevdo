@@ -55,7 +55,7 @@ jobs:
     name: 'Terraform'
     runs-on: ubuntu-latest
     env:
-      GITHUB_ORGANIZATION=nindevdo
+      GITHUB_ORGANIZATION: nindevdo
     environment: production
 
     # Use the Bash shell regardless whether the GitHub Actions runner is ubuntu-latest, macos-latest, or windows-latest
