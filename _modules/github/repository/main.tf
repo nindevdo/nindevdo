@@ -25,3 +25,23 @@ resource "github_team_repository" "admin_teams"{
   repository = github_repository.repo.name
   permission = "admin"
 }
+
+# Branch protection
+resource "github_branch_protection" "main" {
+  repository_id = github_repository.repo.id
+
+  pattern          = "main"
+  enforce_admins   = true
+  allows_deletions = false
+
+  required_status_checks {
+    strict   = false
+    contexts = [ "Terraform" ]
+  }
+
+  required_pull_request_reviews {
+    dismiss_stale_reviews = true
+    # dismissal_restrictions = [local.admin_teams]
+  }
+  # push_restrictions = local.push_teams
+}
