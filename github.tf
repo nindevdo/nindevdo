@@ -1,3 +1,4 @@
 provider "github" {
-  owner = "nindevdo"
+  token = "${var.github_token}"
+  owner = "${var.github_owner}"
 }
