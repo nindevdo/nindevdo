@@ -1,4 +1,6 @@
 pre-commit:
   commands:
+    terraform-fmt:
+      run: terraform fmt
     github-action:
       run: sudo act
