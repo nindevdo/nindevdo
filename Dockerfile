@@ -1,6 +1,5 @@
 FROM "hashicorp/terraform:0.15.5" as terraform
 
-ENV USER=root
 ENV EXEC_PATH=/usr/local/bin
 ENV PROVIDER=all
 
@@ -33,15 +32,7 @@ RUN curl -LO https://github.com/GoogleCloudPlatform/terraformer/releases/downloa
 && chmod +x terraformer-${PROVIDER}-linux-amd64 \
 && mv terraformer-${PROVIDER}-linux-amd64 $EXEC_PATH/terraformer
 
-# install tfenv
-COPY ./.terraform-version /${USER}/.tfenv/version
 
-RUN git clone https://github.com/tfutils/tfenv.git ~/.tfenv \
-&& ln -s ~/.tfenv/bin/* /usr/local/bin \
-&& echo 'trust-tfenv: yes' > ~/.tfenv/use-gpgv \
-&& tfenv install $(cat ${USER}/.tfenv/version)
-
-# install tgenv
 RUN git clone https://github.com/cunymatthieu/tgenv.git ~/.tgenv && ln -s ~/.tgenv/bin/* /usr/local/bin
 
 # install terraform-landscape https://github.com/coinbase/terraform-landscape
