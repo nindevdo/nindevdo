@@ -1,6 +1,4 @@
-ARG TF_VERSION
-
-FROM "hashicorp/terraform:${TF_VERSION}" as terraform
+FROM "hashicorp/terraform:0.15.5" as terraform
 
 ENV EXEC_PATH=/usr/local/bin
 ENV PROVIDER=all
