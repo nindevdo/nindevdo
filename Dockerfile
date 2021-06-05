@@ -34,12 +34,12 @@ RUN curl -LO https://github.com/GoogleCloudPlatform/terraformer/releases/downloa
 && mv terraformer-${PROVIDER}-linux-amd64 $EXEC_PATH/terraformer
 
 # install tfenv
-COPY ./.terraform-version /$USER/.tfenv/version
+COPY ./.terraform-version /${USER}/.tfenv/version
 
 RUN git clone https://github.com/tfutils/tfenv.git ~/.tfenv \
 && ln -s ~/.tfenv/bin/* /usr/local/bin \
 && echo 'trust-tfenv: yes' > ~/.tfenv/use-gpgv \
-&& tfenv install $(cat $USER/.tfenv/version)
+&& tfenv install $(cat ${USER}/.tfenv/version)
 
 # install tgenv
 RUN git clone https://github.com/cunymatthieu/tgenv.git ~/.tgenv && ln -s ~/.tgenv/bin/* /usr/local/bin
