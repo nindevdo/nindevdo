@@ -1,5 +1,6 @@
 FROM "hashicorp/terraform:0.15.5" as terraform
 
+ENV USER=root
 ENV EXEC_PATH=/usr/local/bin
 ENV PROVIDER=all
 
