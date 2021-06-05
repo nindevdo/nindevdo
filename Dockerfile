@@ -1,0 +1,1 @@
+FROM docker.pkg.github.com/nindevdo/barch/barch:latest
