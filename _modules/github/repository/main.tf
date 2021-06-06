@@ -10,21 +10,15 @@ resource "github_repository" "repo" {
   has_wiki               = var.has_wiki
   name                   = var.name
   visibility             = var.visibility
+  vulnerability_alerts   = var.vulnerability_alerts
+  pages {
+    source {
+      branch = "main"
+      path   = "/"
+    }
+  }
 }
 
-resource "github_team_repository" "push_teams"{
-  for_each = local.push_teams
-  team_id    = each.value
-  repository = github_repository.repo.name
-  permission = "push"
-}
-
-resource "github_team_repository" "admin_teams"{
-  for_each = local.admin_teams
-  team_id    = each.value
-  repository = github_repository.repo.name
-  permission = "admin"
-}
 
 # Branch protection
 resource "github_branch_protection" "main" {
@@ -41,7 +35,5 @@ resource "github_branch_protection" "main" {
 
   required_pull_request_reviews {
     dismiss_stale_reviews = true
-    # dismissal_restrictions = [local.admin_teams]
   }
-  # push_restrictions = local.push_teams
 }

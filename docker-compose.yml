@@ -1,0 +1,19 @@
+version: "3.7"
+
+services:
+  terraform:
+    build:
+      context: .
+      target: terraform
+      args:
+        TF_VERSION: ${TF_VERSION-0.15.5}
+    container_name: terraform-${TF_ENV-nindevdo}-${TF_VERSION-0.15.5}
+    environment:
+      - TF_VAR_github_token=${GITHUB_TOKEN-github-null}
+      - TF_VAR_github_owner=${GITHUB_OWNER-nindevdo}
+      - TF_VAR_tf_version=${TF_VERSION-0.15.5}
+    entrypoint: /bin/bash
+    volumes:
+      - ${PWD}:/${TF_ENV-nindevdo}
+    tty: true
+    working_dir: /${TF_ENV-nindevdo}

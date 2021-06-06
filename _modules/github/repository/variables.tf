@@ -61,12 +61,8 @@ variable "has_wiki" {
   default     = true
 }
 
-variable "push_teams" {
-  description = "teams that have access"
-  type        = list(number)
-}
-
-variable "admin_teams" {
-  description = "teams that have access"
-  type        = list(number)
+variable "vulnerability_alerts" {
+  description = "vulnerability_alerts"
+  type        = bool
+  default     = true
 }

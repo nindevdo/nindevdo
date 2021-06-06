@@ -13,17 +13,3 @@ variable "privacy" {
   type          = string
   default       = "closed"
 }
-
-variable "repositories" {
-  description   = "repo in team"
-  type          = map(object({
-      permission = string
-  }))
-}
-
-variable "users" {
-  description   = "users of team"
-  type          = map(object({
-      role = string
-  }))
-} 
