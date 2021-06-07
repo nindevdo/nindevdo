@@ -8,4 +8,4 @@ output "name" {
 
 output "slug" {
   value = github_team.main.slug
-} 
+}

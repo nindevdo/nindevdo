@@ -1,15 +1,18 @@
 ARG TF_VERSION
 
-FROM "hashicorp/terraform:${TF_VERSION}" as terraform
+FROM boltops/terraspace:alpine as terraform
 
 ENV EXEC_PATH=/usr/local/bin
 ENV PROVIDER=all
 
 # Install base toolset
 RUN apk --no-cache add \
+  aws-cli \
   bash \
   build-base \
+  cmake \
   curl \
+  diffutils \
   gnupg \
   groff \
   inotify-tools \
@@ -17,7 +20,11 @@ RUN apk --no-cache add \
   parallel \
   py-pip \
   python3 \
-&& pip install awscli
+  ruby-bundler \
+  ruby-dev \
+  ruby-json \
+  ruby-unf_ext \
+  zlib-dev
 
 #Install tflint for linting terraform code https://github.com/terraform-linters/tflint
 RUN curl -L "$(curl -Ls https://api.github.com/repos/terraform-linters/tflint/releases/latest | grep -o -E "https://.+?_linux_amd64.zip")" -o tflint.zip \
@@ -36,12 +43,14 @@ RUN curl -LO https://github.com/GoogleCloudPlatform/terraformer/releases/downloa
 && chmod +x terraformer-${PROVIDER}-linux-amd64 \
 && mv terraformer-${PROVIDER}-linux-amd64 $EXEC_PATH/terraformer
 
+RUN git clone https://github.com/tfutils/tfenv.git ~/.tfenv \
+&& ln -s ~/.tfenv/bin/* ${EXEC_PATH} \
+&& echo 'trust-tfenv: yes' > ~/.tfenv/use-gpgv \
+&& tfenv install ${TF_VERSION} \
+&& tfenv use ${TF_VERSION}
+
 #Install tgenv
-RUN git clone https://github.com/cunymatthieu/tgenv.git ~/.tgenv && ln -s ~/.tgenv/bin/* /usr/local/bin
+RUN git clone https://github.com/cunymatthieu/tgenv.git ~/.tgenv && ln -s ~/.tgenv/bin/* ${EXEC_PATH}
 
 #Install terraform-landscape https://github.com/coinbase/terraform-landscape
-RUN apk --no-cache add \
-  ruby-bundler \
-  ruby-json \
-  diffutils \
-&& gem install --no-document --no-document terraform_landscape
+RUN gem install --no-document --no-document terraform_landscape terraspace
