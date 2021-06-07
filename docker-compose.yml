@@ -9,8 +9,9 @@ services:
         TF_VERSION: ${TF_VERSION-0.15.5}
     container_name: terraform-${TF_ENV-nindevdo}-${TF_VERSION-0.15.5}
     environment:
-      - TF_VAR_github_token=${GITHUB_TOKEN-github-null}
-      - TF_VAR_github_owner=${GITHUB_OWNER-nindevdo}
+      - AWS
+      - AWS
+      - AWS
       - TF_VAR_tf_version=${TF_VERSION-0.15.5}
     entrypoint: /bin/bash
     volumes:
