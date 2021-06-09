@@ -9,9 +9,9 @@ services:
         TF_VERSION: ${TF_VERSION-0.15.5}
     container_name: terraform-${TF_ENV-nindevdo}-${TF_VERSION-0.15.5}
     environment:
-      - AWS
-      - AWS
-      - AWS
+      - AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
+      - AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
+      - AWS_REGION=${AWS_REGION}
       - TF_VAR_tf_version=${TF_VERSION-0.15.5}
     entrypoint: /bin/bash
     volumes:
