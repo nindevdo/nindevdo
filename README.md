@@ -1,7 +1,18 @@
 # nindevdo
+
 ## How to use this repo
-On the first run of this pr
+This repository is a DRY implementation of terraform for the entire nindevdo organization.  It uses the terraspace framework for it's implementation and is designed to be as simpla as possible to use as well as have the automation in place to keep things as simple as possible while deploying complex infrastructure. It's open-source because that's what nindevdo is all about. And it's a good example of how to create an entire organization using terraform.
 
-this project uses Terra space and for this project and the goal of this project
+To use this repository you need to run
+docker-compse up the secrets for AWS or GCP are or should be in github secrets manager
 
-this repository is a dry implementation of terraform for the entire Nintendo organization . It's meant to be used as an open source example of what a dry project might look like forterra form it uses terrace space for the earth please see documentation on Terra space and is meant to be ran as simply as possible with docker compose simply export your AWS accesskeys and type in docker compose up or docker compose run and your ready to go if running this the first time you might want to run SSM first to ensure that your secrets are all available tutera space 
+export keys for aws, gcp, etc
+cd aws-nindevo
+bundle install
+terraspace init
+terraspace plan
+
+
+To modify state look in .terraspace-cache and drill down until you find the appropriate directory and then you can run terraform state import, mv, etc. commands.
+
+The docker-compose.yml file assumes you either have the AWS environment variables available or in a global context. In GitHub for example the environment variables are set globally for codespaces.

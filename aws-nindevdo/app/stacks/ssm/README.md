@@ -1,0 +1,1 @@
+The SSM is meant to only be ran when provisioning secrets (so not that often). All stacks pull secrets from ssm so all you need to setup initially is the aws secret and access keys to get started.

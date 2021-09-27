@@ -15,9 +15,3 @@ resource "github_membership" "bandithak" {
   username = "bandithak"
   role     = "member"
 }
-  
-# Member / Dev
-resource "github_membership" "pDhRoAeGnOiNx" {
-  username = "pDhRoAeGnOiNx"
-  role     = "member"
-}

@@ -43,3 +43,8 @@ module "haxor-space-vault" {
   name        = "haxor.space-vault"
   description = "haxor.space-vault"
 }
+module "kubernetes-admin" {
+  source      = "../../modules/github/repository"
+  name        = "kubernetes-admin"
+  description = "kubernetes-admin"
+}
