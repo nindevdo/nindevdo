@@ -1,1 +1,2 @@
 The SSM is meant to only be ran when provisioning secrets (so not that often). All stacks pull secrets from ssm so all you need to setup initially is the aws secret and access keys to get started.
+The export of variables is manual because they are sensitive so you can run `export TF_VAR_some_secret=somevalue` to get things setup

@@ -1,10 +1,9 @@
 # nindevdo
 
 ## How to use this repo
-This repository is a DRY implementation of terraform for the entire nindevdo organization.  It uses the terraspace framework for it's implementation and is designed to be as simpla as possible to use as well as have the automation in place to keep things as simple as possible while deploying complex infrastructure. It's open-source because that's what nindevdo is all about. And it's a good example of how to create an entire organization using terraform.
+This repository is a DRY implementation of terraform for the entire nindevdo organization.  It uses the terraspace framework for it's implementation and is designed to be as simpla as possible to use and have the automation in place to keep things as simple as possible while deploying complex infrastructure. It's open-source because that's what nindevdo is all about. And it's a good example of how to create an entire organization using terraform.
 
-To use this repository you need to run
-docker-compse up the secrets for AWS or GCP are or should be in github secrets manager
+To use this repository you need to run `docker-compse up` to bring up the container. The required secrets must be set in the environment prior to starting the container.
 
 export keys for aws, gcp, etc
 cd aws-nindevo

@@ -1,3 +1,4 @@
+#To get the team id if importing you can run `curl -H "Authorization: token $TF_VAR_github_token"  https://api.github.com/orgs/$TF_VAR_github_owner/teams`
 module "bots" {
   source      = "../../modules/github/team"
   description = "Team for Bots"
